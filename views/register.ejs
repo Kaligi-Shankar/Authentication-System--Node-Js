@@ -1,0 +1,175 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body text-center">
+      <h1 class="mb-3">
+        <img src="/assets/secure-icon.png" alt="icon" width="20%" />
+      </h1>
+      <h2>Register New User</h2>
+      <%- include ("./messages") %>
+      <form action="/auth/register" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="name"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Enter Name"
+            value="<%= typeof name != 'undefined' ? name : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+            value="<%= typeof email != 'undefined' ? email : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter Password"
+            value="<%= typeof password != 'undefined' ? password : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Confirm Password</label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            class="form-control"
+            placeholder="Confirm Password"
+            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+          />
+        </div>
+
+        <label> Enter Captcha: </label>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              name="capt"
+              readonly
+              id="capt"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              name="typecapt"
+              id="typecapt"
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">
+          Register
+        </button>
+      </form>
+
+      <h6>
+        Captcha not visible
+        <img src="/assets/refresh.png" width="40px" onclick="cap()" />
+      </h6>
+
+      <script type="text/javascript">
+        function cap() {
+          var alpha = [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+            "l",
+            "m",
+            "n",
+            "o",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "u",
+            "v",
+            "w",
+            "x",
+            "y",
+            "z",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
+            "!",
+            "@",
+            "#",
+            "$",
+            "^",
+            "&",
+            "*",
+          ];
+          var a = alpha[Math.floor(Math.random() * 69)];
+          var b = alpha[Math.floor(Math.random() * 69)];
+          var c = alpha[Math.floor(Math.random() * 69)];
+          var d = alpha[Math.floor(Math.random() * 69)];
+          var e = alpha[Math.floor(Math.random() * 69)];
+          var f = alpha[Math.floor(Math.random() * 69)];
+
+          var final = a + b + c + d + e + f;
+          document.getElementById("capt").value = final;
+        }
+      </script>
+      <p class="mt-4">
+        Already have an account? <a href="/auth/login">Login</a>
+      </p>
+    </div>
+  </div>
+</div>
